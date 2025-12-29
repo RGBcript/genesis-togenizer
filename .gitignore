@@ -1,5 +1,25 @@
+# --- Rust ---
 /target
 **/*.rs.bk
 *.pdb
+Cargo.lock
+
+# --- Node.js / Web ---
+node_modules/
+npm-debug.log
+yarn-error.log
+/dist
+/build
+.env
+.env.local
+
+# --- System ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# --- IDEs ---
 .idea
 .vscode
+*.swp
+*.swo

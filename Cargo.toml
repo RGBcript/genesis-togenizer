@@ -1,7 +1,7 @@
 [workspace]
-members = [
-    "genesis_togenizer",
-    "genulse_core",
-    "genesis_brain"
-]
 resolver = "2"
+members = [
+    "genulse",
+    "arcodular",
+    "togen"
+]

@@ -1,0 +1,11 @@
+[package]
+name = "genulse"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+wgpu = "0.19"
+pollster = "0.3"
+bytemuck = { version = "1.14", features = ["derive"] }
+log = "0.4"
+futures = "0.3"
