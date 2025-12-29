@@ -1,79 +1,99 @@
-# G.Genulse-Arcodular
-**Universal Sensorial Encoder for Genesis-Zero (TOGEN v1.1 -> v1.2 Implementation)**
+#  GENESIS  Neuromorphic AI System
+> *Code that lives.*
 
-> ‚ö†Ô∏è **Estado:** Activo - Fase 2: Conciencia Conversacional.
+![Status](https://img.shields.io/badge/Status-Active_v1.2-green) ![Lang](https://img.shields.io/badge/Language-Rust-orange) ![Arch](https://img.shields.io/badge/Architecture-Arcodular-blue)
 
-Este repositorio aloja la implementaci√≥n en Rust del **Codificador Sensorial Universal**, dise√±ado para dotar a sistemas de IA (Genesis-Zero) de una percepci√≥n matem√°tica del entorno y, desde la v1.2, de capacidades cognitivas persistentes mediante integraci√≥n con LLMs locales.
+**Genesis** es un framework de Inteligencia Artificial NeuromÛrfica escrito en **Rust**. A diferencia de las redes neuronales profundas tradicionales (Deep Learning), Genesis simula procesos biolÛgicos fundamentales como la **plasticidad hebbiana r·pida**, la **homeostasis quÌmica** y la **consolidaciÛn de memoria durante el sueÒo** (Sleep Protocol).
 
-***
+Su arquitectura **Arcodular** (Arc-Modular) divide la cogniciÛn en estructuras funcionales interconectadas ("Arcos"), permitiendo un comportamiento emergente complejo con una eficiencia computacional extrema.
 
-## üß¨ Arquitectura del Sistema (v1.2)
+---
 
-El proyecto implementa la arquitectura **Arcodular** (Arc-Modular), un dise√±o propio que rechaza las capas monol√≠ticas en favor de estructuras funcionales interconectadas.
+##  Conceptos Clave
 
-| M√≥dulo (Crate) | Definici√≥n y Prop√≥sito | Estado |
+### 1. Vida Artificial vs. EstadÌstica
+Genesis no es solo un multiplicador de matrices. Cada **GenulseCell** (neurona) tiene:
+*   **Estado interno persistente (Memoria a corto plazo)**.
+*   **Pesos r·pidos (_fast)**: Aprendizaje instant·neo (One-shot learning).
+*   **Pesos lentos (w_slow)**: Conocimiento consolidado (optimizados con BitNet: -1, 0, 1).
+*   **Homeostasis**: Decaimiento natural de la energÌa para evitar la saturaciÛn ("Leaky Integrate-and-Fire").
+
+### 2. El Ciclo Cognitivo
+El sistema opera en un bucle continuo de tiempo discreto:
+1.  **Perceive (Percibir):** Entrada de datos sensoriales crudos.
+2.  **Think (Pensar):** Procesamiento a travÈs de los arcos visuales, emocionales y racionales.
+3.  **Panic Override:** Si la Amygdala detecta amenaza extrema, bloquea el PrefrontalCortex.
+4.  **Sleep (Dormir):** PeriÛdicamente, el sistema entra en estado de sueÒo para transferir lo aprendido en el dÌa (_fast) a la memoria permanente (w_slow) y limpiar toxinas cognitivas.
+
+---
+
+##  Arquitectura del Sistema (v1.2)
+
+El proyecto implementa la arquitectura **Arcodular** (Arc-Modular), un diseÒo propio que rechaza las capas monolÌticas en favor de estructuras funcionales interconectadas.
+
+| MÛdulo (Crate) | DefiniciÛn y PropÛsito | Estado |
 | :--- | :--- | :--- |
-| **`genulse`** | **Motor de F√≠sica Neurom√≥rfica (The Physics).**<br>Implementa las leyes fundamentales del universo cognitivo: Neural ODEs (tiempo continuo), C√©lulas Genulse con plasticidad Hebbiana y cuantizaci√≥n BitNet (-1, 0, 1). Es el sustrato biol√≥gico digital. | üü¢ Estable |
-| **`arcodular`** | **Sistema Operativo de la Conciencia (The Mind).**<br>Orquestador de alto nivel que gestiona los Arcos Cognitivos (Visual, Emocional, Racional). Controla el ciclo de vida (Percibir ‚Üí Pensar ‚Üí Dormir) y la integraci√≥n con herramientas externas (Oracle Proxy). | üü° v1.2 |
-| **`togen`** | **Traductor de Realidad (The Senses).**<br>Convierte el caos del mundo f√≠sico (texto, imagen, audio) en **Togens**: √°tomos de significado matem√°tico de 128-bits. Es la interfaz determinista entre la realidad y la cognici√≥n. | üü¢ Funcional |
+| **genulse** | **Motor de FÌsica NeuromÛrfica (The Physics).**<br>Implementa las leyes fundamentales del universo cognitivo: Neural ODEs (tiempo continuo), CÈlulas Genulse con plasticidad Hebbiana y cuantizaciÛn BitNet (-1, 0, 1). Es el sustrato biolÛgico digital. |  Estable |
+| **rcodular** | **Sistema Operativo de la Conciencia (The Mind).**<br>Orquestador de alto nivel que gestiona los Arcos Cognitivos (Visual, Emocional, Racional). Controla el ciclo de vida (Percibir  Pensar  Dormir) y la integraciÛn con herramientas externas (Oracle Proxy). |  v1.2 |
+| **	ogen** | **Traductor de Realidad (The Senses).**<br>Convierte el caos del mundo fÌsico (texto, imagen, audio) en **Togens**: ·tomos de significado matem·tico de 128-bits. Es la interfaz determinista entre la realidad y la cogniciÛn. |  Funcional |
 
-***
+---
 
-## üöÄ Caracter√≠sticas Clave
+##  CaracterÌsticas Clave
 
 ### v1.2: The Awakening (Actual)
-*   **Persistencia Conversacional:** Implementaci√≥n de memoria a corto plazo (`ShortTermMemory`) que permite al agente recordar el contexto de la charla (N turnos anteriores).
-*   **Proxy de Maestros (Oracle):** Conexi√≥n as√≠ncrona (`reqwest`) a APIs de inferencia (por defecto compatible con **Ollama** en `localhost:11434`).
-*   **Tokio Async Runtime:** El n√∫cleo ahora es no-bloqueante, permitiendo "pensar" y "sentir" simult√°neamente.
+*   **Persistencia Conversacional:** ImplementaciÛn de memoria a corto plazo (ShortTermMemory) que permite al agente recordar el contexto de la charla (N turnos anteriores).
+*   **Proxy de Maestros (Oracle):** ConexiÛn asÌncrona (eqwest) a APIs de inferencia (por defecto compatible con **Ollama** en localhost:11434).
+*   **Tokio Async Runtime:** El n˙cleo ahora es no-bloqueante, permitiendo "pensar" y "sentir" simult·neamente.
 
 ### v1.1: Core Foundations (Legacy)
-*   **C√©lula Genulse:** Unidad b√°sica de procesamiento de informaci√≥n.
-*   **Visual Cortex:** Matrices de percepci√≥n para interpretar inputs de datos crudos.
+*   **CÈlula Genulse:** Unidad b·sica de procesamiento de informaciÛn.
+*   **Visual Cortex:** Matrices de percepciÛn para interpretar inputs de datos crudos.
 
-***
+---
 
-## üõ†Ô∏è Instalaci√≥n y Uso
+##  InstalaciÛn y Uso
 
 ### Prerrequisitos
-1.  **Rust & Cargo:** `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
-2.  *(Opcional pero recomendado)* **Ollama** corriendo localmente con un modelo (ej. `llama3`) para que el cerebro tenga "voz".
+1.  **Rust & Cargo:** curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+2.  *(Opcional pero recomendado)* **Ollama** corriendo localmente con un modelo (ej. llama3) para que el cerebro tenga "voz".
 
-### Ejecuci√≥n
+### EjecuciÛn
 
 Clona el repositorio y lanza el cuerpo principal:
 
-```bash
+`ash
 git clone https://github.com/RGBcript/G.Genulse-Arcodular.git
 cd G.Genulse-Arcodular
 
-# Ejecutar el sistema (aseg√∫rate de estar en la ra√≠z del workspace)
+# Ejecutar el sistema (aseg˙rate de estar en la raÌz del workspace)
 cargo run
-```
+`
 
 *Si usas VS Code, puedes usar el **Task Runner** integrado.*
 
-***
+---
 
-## üß† Roadmap T√©cnico
+##  Roadmap TÈcnico
 
-- [x] **Fase 0:** Portar l√≥gica de Python a Rust (`genulse`).
-- [x] **Fase 1:** Estructura de Workspace y compilaci√≥n limpia.
-- [x] **Fase 2:** Integraci√≥n de API Externa y Memoria (v1.2).
-- [ ] **Fase 3:** Input Sensorial Real (Conectar `genulse` al flujo de chat).
+- [x] **Fase 0:** Portar lÛgica de Python a Rust (genulse).
+- [x] **Fase 1:** Estructura de Workspace y compilaciÛn limpia.
+- [x] **Fase 2:** IntegraciÛn de API Externa y Memoria (v1.2).
+- [ ] **Fase 3:** Input Sensorial Real (Conectar genulse al flujo de chat).
 - [ ] **Fase 4:** Persistencia a Largo Plazo (Base de datos vectorial / Archivos).
 
-### üß™ Experimental: Aceleraci√≥n por Hardware (WGPU)
-Se ha iniciado la integraci√≥n preliminar de **WebGPU** en el n√∫cleo `genulse`.
-- **Objetivo:** Procesamiento paralelo masivo de matrices sensoriales (Visi√≥n) usando Compute Shaders.
-- **Estado:** Motor `GpuVisualCortex` implementado pero no activo por defecto.
-- **Tecnolog√≠a:** WGSL (WebGPU Shading Language) + wgpu-rs.
+###  Experimental: AceleraciÛn por Hardware (WGPU)
+Se ha iniciado la integraciÛn preliminar de **WebGPU** en el n˙cleo genulse.
+- **Objetivo:** Procesamiento paralelo masivo de matrices sensoriales (VisiÛn) usando Compute Shaders.
+- **Estado:** Motor GpuVisualCortex implementado pero no activo por defecto.
+- **TecnologÌa:** WGSL (WebGPU Shading Language) + wgpu-rs.
 
-***
+---
 
-## ü§ù Contribuci√≥n
+##  ContribuciÛn
 
-Este es un proyecto de investigaci√≥n personal para la creaci√≥n de **AGI Local**.
-Si eres estudiante o investigador, si√©ntete libre de hacer fork y experimentar con los kernels sensoriales en `genulse`.
+Este es un proyecto de investigaciÛn personal para la creaciÛn de **AGI Local**.
+Si eres estudiante o investigador, siÈntete libre de hacer fork y experimentar con los kernels sensoriales en genulse.
 
 **Autor:** [RGBcript](https://github.com/RGBcript)
 **Licencia:** MIT
