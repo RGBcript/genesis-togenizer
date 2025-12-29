@@ -62,7 +62,7 @@ El orquestador central (La "Mente").
 Clona el repositorio y ejecuta el cerebro principal:
 
 ```bash
-git clone https://github.com/tu-usuario/genesis-project.git
+git clone https://github.com/RGBcript/G.Genulse-Arcodular.git
 cd genesis-project/MAINI
 
 # Ejecutar en modo release (recomendado para performance)
