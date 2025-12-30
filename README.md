@@ -148,6 +148,23 @@ Aunque el sistema acepta texto libre, se recomienda el formato `Verbo:Parámetro
 | `Key:Enter`, `Type:Hello` | `0x01` | **Teclado** |
 | `Wait:1000`, `Scroll:Down` | `0x00` | **Otro** |
 
+<details>
+<summary><strong>📊 Technical Validation: Semantics (Click to expand)</strong></summary>
+
+> **Hypothesis:** Togenizer uses LSH (Locality Sensitive Hashing) to cluster structurally similar concepts in the 32-bit Semantic space without heavy embeddings.
+
+**Results from `benchmarks/togen_similarity.log`:**
+
+| Pair | Semantic Dist (Bits) | Interpretation |
+| :--- | :---: | :--- |
+| `genesis` vs `genesys` | **0** | **Identical.** Robust against typos. |
+| `hello` vs `hallo` | **4** | **High Similarity.** Groups dialects. |
+| `hello` vs `hola` | **7** | **Low Similarity.** Distinguishes languages. |
+| `genesis` vs `skynet` | **6** | **Distinct.** No confusion. |
+
+*Validated via `cargo test -p togen --test similarity_test`*
+</details>
+
 ---
 
 ## 🤝 Contribución

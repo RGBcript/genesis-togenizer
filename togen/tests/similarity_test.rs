@@ -22,6 +22,24 @@ fn test_structural_similarity() {
 
     println!("Distance 'genesis' vs 'skynet': Sem={}, Est={}", dist_diff_sem, dist_diff_est);
 
+    // Caso 3: Variaciones lingüísticas/Typos
+    let t_hello = ToGen::new("hello");
+    let t_hallo = ToGen::new("hallo"); // German/Typo
+    let t_hola = ToGen::new("hola");   // Spanish
+
+    let d_hello_hallo = hamming_distance_u32(t_hello.get_semantico(), t_hallo.get_semantico());
+    let d_hello_hola = hamming_distance_u32(t_hello.get_semantico(), t_hola.get_semantico());
+
+    println!("Distance 'hello' vs 'hallo': Sem={}", d_hello_hallo);
+    println!("Distance 'hello' vs 'hola': Sem={}", d_hello_hola);
+
+    // Caso 4: Fonética (Metaphone - Estructural)
+    let t_night = ToGen::new("night");
+    let t_knight = ToGen::new("knight");
+    
+    let d_phonetic = hamming_distance_u32(t_night.get_estructural(), t_knight.get_estructural());
+    println!("Distance 'night' vs 'knight' (Phonetic): Est={}", d_phonetic);
+
     // Expectativa: La distancia entre similares debe ser menor que entre diferentes
     // Nota: Con el hash actual (rolling), esto probablemente falle. 
     // Este test es para validar la hipótesis del usuario.
