@@ -82,9 +82,9 @@ impl ToGen {
         
         // Determinar Meta (Bits 8-15)
         let lower_command = command.to_lowercase();
-        let meta = if lower_command.contains("key") {
+        let meta = if lower_command.contains("key") || lower_command.contains("type") || lower_command.contains("press") || lower_command.contains("enter") {
             0x01u128 // Teclado
-        } else if lower_command.contains("click") || lower_command.contains("move") {
+        } else if lower_command.contains("click") || lower_command.contains("move") || lower_command.contains("scroll") || lower_command.contains("drag") {
             0x02u128 // Mouse
         } else {
             0x00u128 // Otros
