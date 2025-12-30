@@ -41,6 +41,10 @@ El proyecto implementa la arquitectura **Arcodular** (Arc-Modular), un diseño p
 
 ## 🚀 Características Clave
 
+### v1.3: The Neuro-Link (In Development)
+*   **Genesis Neuro-Link:** Dashboard visual interactivo (React + WebAssembly) para visualizar el flujo de Togens y la actividad de los Arcos en tiempo real.
+*   **Visual Node Editor:** Interfaz basada en nodos (Flow-Based Programming) para inspeccionar la arquitectura mental.
+
 ### v1.2: The Awakening (Actual)
 *   **Persistencia Conversacional:** Implementación de memoria a corto plazo (`ShortTermMemory`) que permite al agente recordar el contexto de la charla (N turnos anteriores).
 *   **Proxy de Maestros (Oracle):** Conexión asíncrona (`reqwest`) a APIs de inferencia (por defecto compatible con **Ollama** en `localhost:11434`).
@@ -79,7 +83,7 @@ cargo run
 - [x] **Fase 0:** Portar lógica de Python a Rust (`genulse`).
 - [x] **Fase 1:** Estructura de Workspace y compilación limpia.
 - [x] **Fase 2:** Integración de API Externa y Memoria (v1.2).
-- [ ] **Fase 3:** Input Sensorial Real (WGPU + Frontend).
+- [x] **Fase 3:** Input Sensorial Real (Frontend Neuro-Link Implementado).
 - [ ] **Fase 4:** **Broca's Arc (The Red Pill).** Implementación del *Symbol Grounding* biológico. Aprendizaje de lenguaje por asociación Hebbiana (Visual <-> Auditivo) sin LLMs.
 - [ ] **Fase 5:** Persistencia a Largo Plazo (Base de datos vectorial / Archivos).
 
@@ -88,6 +92,33 @@ Se ha iniciado la integración preliminar de **WebGPU** en el núcleo `genulse`.
 - **Objetivo:** Procesamiento paralelo masivo de matrices sensoriales (Visión) usando Compute Shaders.
 - **Estado:** Motor `GpuVisualCortex` implementado pero no activo por defecto.
 - **Tecnología:** WGSL (WebGPU Shading Language) + wgpu-rs.
+
+---
+
+## 📡 Protocolo Togen (Especificación v1.1)
+
+El **Togen** es un hash de 128-bits que representa un "átomo de significado". Su estructura permite identificar el tipo de dato y sus propiedades sin necesidad de decodificar el contenido original.
+
+### Estructura de Bits
+`[Header: 8] [Meta: 8] [Semántico: 32] [Estructural: 32] [Exacto: 48]`
+
+### Tipos de Datos (Header)
+| Hex | Tipo | Descripción |
+| :--- | :--- | :--- |
+| `0x01` | **Texto** | Lenguaje natural. |
+| `0x02` | **Código** | Lenguaje de programación (detectado por heurística). |
+| `0x03` | **Imagen** | Datos visuales (JPG, PNG). |
+| `0x04` | **Audio** | Datos sonoros (WAV). |
+| `0x05` | **Acción** | Comandos de control (Teclado, Mouse, UI). |
+
+### Formato de Acciones (Recomendado)
+Aunque el sistema acepta texto libre, se recomienda el formato `Verbo:Parámetro` para mayor claridad semántica.
+
+| Comando | Meta (Hex) | Tipo |
+| :--- | :--- | :--- |
+| `Click:Left`, `Move:100,200` | `0x02` | **Mouse** |
+| `Key:Enter`, `Type:Hello` | `0x01` | **Teclado** |
+| `Wait:1000`, `Scroll:Down` | `0x00` | **Otro** |
 
 ---
 
