@@ -38,21 +38,47 @@ export default function App() {
   }, [])
 
   const processText = () => {
-    if (!inputText.trim()) return
+    const text = inputText.trim()
+    if (!text) return
 
-    // Detectar tipo de contenido
-    if (inputText.startsWith('ACT:')) {
-      const command = inputText.substring(4)
+    // 1. Prefijos explícitos (Case Insensitive)
+    if (/^ACT:/i.test(text)) {
+      const command = text.substring(4).trim()
       const hex = togen_from_action(command)
       decodeTogen(hex)
-    } else if (inputText.startsWith('CODE:')) {
-      const code = inputText.substring(5)
+      return
+    } 
+    
+    if (/^CODE:/i.test(text)) {
+      const code = text.substring(5).trim()
       const hex = togen_from_code(code)
       decodeTogen(hex)
-    } else {
-      const hex = togen_from_string(inputText)
-      decodeTogen(hex)
+      return
     }
+
+    // 2. Heurística para Código
+    const codeIndicators = ['function', 'const ', 'let ', 'var ', 'import ', 'class ', 'def ', 'fn ', 'pub ', 'impl ', 'return', 'if (', 'for (', 'while (', '=>', '();', '[]', '{}', '#include', 'package ', 'using namespace', 'std::', 'println!']
+    const isCode = codeIndicators.some(indicator => text.includes(indicator)) || (text.includes(';') && text.includes('{'))
+    
+    if (isCode) {
+       const hex = togen_from_code(text)
+       decodeTogen(hex)
+       return
+    }
+
+    // 3. Heurística para Acciones
+    const actionIndicators = ['Click', 'Move', 'Key', 'Scroll', 'Drag', 'Press', 'Release', 'Type']
+    const isAction = text.length < 50 && actionIndicators.some(indicator => text.includes(indicator))
+
+    if (isAction) {
+        const hex = togen_from_action(text)
+        decodeTogen(hex)
+        return
+    }
+
+    // Default: Texto
+    const hex = togen_from_string(text)
+    decodeTogen(hex)
   }
 
     const decodeTogen = (hex: string) => {
@@ -237,7 +263,7 @@ export default function App() {
           <div className="mb-6">
             <textarea
               className="w-full h-32 p-4 bg-gray-800 border border-gray-700 rounded-lg text-white font-mono resize-none focus:outline-none focus:border-cyan-400"
-              placeholder="Enter text, code, or action (ACT:ClickLeft, CODE:fn main()...)"
+              placeholder="Enter text, code (fn main...), or action (ClickLeft). Auto-detection enabled."
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
             />
