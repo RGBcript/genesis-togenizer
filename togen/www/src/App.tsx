@@ -296,7 +296,7 @@ export default function App() {
               ref={fileInputRef}
               className="hidden"
               onChange={handleFileChange}
-              accept=".txt,.rs,.py,.js,.ts,.json,.cpp,.java,.go,.jpg,.jpeg,.png,.gif,.webp,.wav"
+              accept=".txt,.rs,.py,.js,.ts,.json,.cpp,.java,.go,.c,.h,.html,.css,.sh,.bat,.ps1,.jpg,.jpeg,.png,.gif,.webp,.wav"
             />
             <div className="mb-4">
               {fileName ? (
