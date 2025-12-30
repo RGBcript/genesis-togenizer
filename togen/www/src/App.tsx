@@ -129,12 +129,20 @@ export default function App() {
       } else if (fileExtension === 'wav') {
         hex = togen_from_bytes_audio(uint8Array)
       } else {
-        // Leer como texto
+        // Leer como texto o código
         const textReader = new FileReader()
         textReader.onload = () => {
           const text = textReader.result as string
-          const textHex = togen_from_string(text)
-          decodeTogen(textHex)
+          
+          // Detectar si es código por extensión
+          const codeExtensions = ['rs', 'py', 'js', 'ts', 'json', 'cpp', 'java', 'go', 'c', 'h', 'html', 'css', 'sh', 'bat', 'ps1']
+          if (codeExtensions.includes(fileExtension || '')) {
+             const codeHex = togen_from_code(text)
+             decodeTogen(codeHex)
+          } else {
+             const textHex = togen_from_string(text)
+             decodeTogen(textHex)
+          }
         }
         textReader.readAsText(file)
         return
