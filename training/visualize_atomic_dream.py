@@ -4,8 +4,7 @@ Uses the trained autoencoder to decode atomic dreams into visual form
 """
 
 import numpy as np
-import torch
-from safetensors.torch import load_file, save_file
+from safetensors.numpy import load_file
 from PIL import Image
 import os
 

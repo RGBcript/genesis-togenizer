@@ -1,6 +1,8 @@
+#![allow(non_snake_case, dead_code, unused_mut)]
+
 use anyhow::Result;
 use candle_core::{Tensor, DType, Module, Device};
-use candle_nn::{VarBuilder, Linear, Conv1d, Conv1dConfig, Module as NNModule, linear, conv1d};
+use candle_nn::{VarBuilder, Linear, Conv1d, Conv1dConfig, linear, conv1d};
 use crate::config::InmeceConfig;
 use togen::ToGen;
 
