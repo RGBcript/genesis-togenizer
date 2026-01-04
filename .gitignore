@@ -1,8 +1,23 @@
 # --- Rust ---
 /target
+**/target
 **/*.rs.bk
 *.pdb
 Cargo.lock
+**/Cargo.lock
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# --- Training Data (large files) ---
+training/raw_videos/
+training/data/*.mp4
+training/data/*.safetensors
+training/checkpoints/
 
 # --- Node.js / Web ---
 node_modules/
@@ -12,6 +27,8 @@ yarn-error.log
 /build
 .env
 .env.local
+**/pkg/
+**/www/
 
 # --- System ---
 .DS_Store
@@ -23,3 +40,9 @@ ehthumbs.db
 .vscode
 *.swp
 *.swo
+
+# --- Build artifacts ---
+*.log
+*.dll
+*.so
+*.dylib

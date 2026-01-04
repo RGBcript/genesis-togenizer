@@ -1,176 +1,177 @@
-# 🧠 GENESIS
-> **AGI Local. Biológica. Eficiente.**
+# 🧬 MAINI - Modular Artificial Intelligence Neural Infrastructure
 
-```text
-   ______ ______ _   __ ______ _____ ____ _____
-  / ____// ____// | / // ____// ___//  _// ___/
- / / __ / __/  /  |/ // __/   \__ \ / /  \__ \ 
-/ /_/ // /___ / /|  // /___  ___/ // /  ___/ / 
-\____//_____//_/ |_//_____/ /____//___//____/  
+> A biologically-inspired AGI architecture built on atomic information units (ToGens) and State Space Models (Mamba).
+
+## 🌟 Overview
+
+MAINI implements a novel approach to artificial general intelligence based on:
+
+- **ToGen (128-bit Atomic Units)**: Fundamental information carriers inspired by physical atoms
+- **Mamba SSM (State Space Model)**: World Model with O(n) complexity replacing attention
+- **Predictive Processing**: Free Energy Principle / Karl Friston's theories
+- **Atomic Flow**: Process information atom-by-atom, biologically correct
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        MAINI                                 │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐     │
+│  │  ToGen  │──▶│  Curo   │──▶│ Genulse │──▶│Arcodular│     │
+│  │ (Atom)  │   │ (Brain) │   │  (GPU)  │   │(Memory) │     │
+│  └─────────┘   └─────────┘   └─────────┘   └─────────┘     │
+│       │             │             │             │           │
+│       ▼             ▼             ▼             ▼           │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │              Genesis Runtime                         │   │
+│  └─────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-![Status](https://img.shields.io/badge/status-alpha-orange) ![Rust](https://img.shields.io/badge/rust-1.75%2B-blue) ![WASM](https://img.shields.io/badge/WASM-ready-green) ![Arch](https://img.shields.io/badge/Architecture-Arcodular-blue)
+## 📦 Crates
 
-> **⚠️ Demo Visual:** *[Inserta aquí tu GIF/Screenshot de `docs/demo.gif`]*
+### `togen` - The Atomic Unit
+128-bit information atom with sub-atomic structure:
+```
+┌────────┬──────────────┬─────────┬─────────┬─────────┐
+│ Header │  Quantized   │  Space  │  Time   │  Force  │
+│  8-bit │    48-bit    │  16-bit │  16-bit │  16-bit │
+└────────┴──────────────┴─────────┴─────────┴─────────┘
+```
 
-**Genesis no es otro chatbot.** Es un organismo digital que **siente, duerme y aprende** en tiempo real.
-Olvídate de las matrices estáticas. Genesis utiliza **Neurobiología Simulada** (Spiking Neural Networks + Homeostasis) para correr en tu CPU/GPU con una fracción de la energía de un LLM tradicional.
+- **MATERIA**: Physical/sensory information
+- **NO_MATERIA**: Abstract/conceptual information
 
----
+### `curo` - The Brain (World Model)
+Mamba-based State Space Model for predictive processing:
+- **d_model**: 128 dimensions
+- **n_layers**: 3 Mamba blocks
+- **togen_proj**: Atom encoder (4 → 128)
+- **togen_out**: Atom decoder (128 → 4)
+- **Surprise tracking**: Prediction error history
 
-## ⚡ Quick Start (En 30 segundos)
+### `genulse` - GPU Computation Engine
+WGPU-based parallel processing for:
+- Materia (visual/sensory) encoding
+- Real-time inference
+- Shader-based computation
 
-### 1. El Cerebro (Backend)
-Clona y corre la simulación de conciencia:
+### `arcodular` - Memory System
+External memory and knowledge storage:
+- Episodic memory
+- Semantic knowledge graphs
+- ONNX model integration
+
+### `genesis_runtime` - Orchestrator
+Main runtime coordinating all components.
+
+### `inmece` - Internal Mechanism
+Introspection and internal state management.
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Rust 1.75+
+- Python 3.10+ (for training)
+- CUDA/ROCm (optional, for GPU)
+
+### Build
 ```bash
-git clone https://github.com/RGBcript/G.Genulse-Arcodular.git
-cd G.Genulse-Arcodular
-cargo run -p arcodular
+cd MAINI
+cargo build --release
 ```
-*Verás los logs del ciclo cognitivo: Percibir -> Pensar -> Dormir.*
 
-### 2. Los Sentidos (Neuro-Link Frontend)
-Para ver el **Tablero Visual** y el **Grafo Neuronal**:
+### Train Atomic Model
 ```bash
-cd togen/www
-npm install
-npm run dev
-```
-*Abre `http://localhost:5173` y selecciona la pestaña "Neuro-Link".*
+# 1. Prepare atomic dataset from videos
+cd training
+python prepare_atomic_dataset.py
 
----
+# 2. Train Curo (Mamba World Model)
+cargo run --release --bin train_atomic -p curo
 
-## 🧬 ¿Por qué Genesis?
-
-### 1. Biología, no estadística
-**Mientras ChatGPT predice la siguiente palabra, Genesis construye modelos internos del contexto.**
-Funciona como una sinapsis que se refuerza, no como un diccionario gigante.
-*   **Memoria a Corto Plazo:** Recuerda el contexto sin re-procesar todo el historial.
-*   **Sueño (Sleep Protocol):** Consolida aprendizajes (`a_fast` -> `w_slow`) y limpia toxinas cognitivas.
-*   **Eficiencia:** Usa cuantización BitNet (-1, 0, 1) y Spiking Networks.
-
-### 2. Arquitectura Arcodular
-El sistema no es un bloque monolítico. Es un grafo de **Arcos Cognitivos**:
-*   **Genulse (Física):** El motor de ecuaciones diferenciales.
-*   **Arcodular (Mente):** El orquestador de módulos.
-*   **Togen (Sentidos):** Protocolo de hashing multimodal (128-bit).
-
----
-
-## 🏗️ Arquitectura del Sistema (v1.2)
-
-El proyecto implementa la arquitectura **Arcodular** (Arc-Modular), un diseño propio que rechaza las capas monolíticas en favor de estructuras funcionales interconectadas.
-
-| Módulo (Crate) | Definición y Propósito | Estado |
-| :--- | :--- | :--- |
-| **`genulse`** | **Motor de Física Neuromórfica (The Physics).**<br>Implementa las leyes fundamentales del universo cognitivo: Neural ODEs (tiempo continuo), Células Genulse con plasticidad Hebbiana y cuantización BitNet (-1, 0, 1). Es el sustrato biológico digital. | 🟢 Estable |
-| **`arcodular`** | **Sistema Operativo de la Conciencia (The Mind).**<br>Orquestador de alto nivel que gestiona los Arcos Cognitivos (Visual, Emocional, Racional). Controla el ciclo de vida (Percibir → Pensar → Dormir) y la integración con herramientas externas (Oracle Proxy). | 🟡 v1.2 |
-| **`togen`** | **Traductor de Realidad (The Senses).**<br>Convierte el caos del mundo físico (texto, imagen, audio) en **Togens**: átomos de significado matemático de 128-bits. Es la interfaz determinista entre la realidad y la cognición. | 🟢 Funcional |
-
----
-
-## 🚀 Características Clave
-
-### v1.3: The Neuro-Link (In Development)
-*   **Genesis Neuro-Link:** Dashboard visual interactivo (React + WebAssembly) para visualizar el flujo de Togens y la actividad de los Arcos en tiempo real.
-*   **Visual Node Editor:** Interfaz basada en nodos (Flow-Based Programming) para inspeccionar la arquitectura mental.
-
-### v1.2: The Awakening (Actual)
-*   **Persistencia Conversacional:** Implementación de memoria a corto plazo (`ShortTermMemory`) que permite al agente recordar el contexto de la charla (N turnos anteriores).
-*   **Proxy de Maestros (Oracle):** Conexión asíncrona (`reqwest`) a APIs de inferencia (por defecto compatible con **Ollama** en `localhost:11434`).
-*   **Tokio Async Runtime:** El núcleo ahora es no-bloqueante, permitiendo "pensar" y "sentir" simultáneamente.
-
-### v1.1: Core Foundations (Legacy)
-*   **Célula Genulse:** Unidad básica de procesamiento de información.
-*   **Visual Cortex:** Matrices de percepción para interpretar inputs de datos crudos.
-
----
-
-## 🛠️ Instalación y Uso
-
-### Prerrequisitos
-1.  **Rust & Cargo:** `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
-2.  **Node.js & NPM:** Para el frontend Neuro-Link.
-3.  *(Opcional)* **Ollama** corriendo localmente para el módulo de lenguaje.
-
-### Ejecución Completa
-
-```bash
-# Terminal 1: El Cerebro
-cargo run -p arcodular
-
-# Terminal 2: La Interfaz
-cd togen/www
-npm run dev
+# 3. Visualize atomic dreams
+python visualize_atomic_dream.py
 ```
 
+## 📂 Project Structure
+
+```
+MAINI/
+├── Cargo.toml              # Workspace config
+├── README.md               # This file
+├── assets/
+│   └── models/             # ONNX models
+├── crates/
+│   ├── arcodular/          # Memory system
+│   ├── curo/               # Brain (Mamba SSM)
+│   │   └── src/
+│   │       ├── lib.rs
+│   │       ├── model.rs    # CuroModel + MambaBlock
+│   │       ├── config.rs
+│   │       └── bin/
+│   │           └── train_atomic.rs
+│   ├── genesis_runtime/    # Main runtime
+│   ├── genulse/            # GPU engine
+│   ├── inmece/             # Internal mechanism
+│   └── togen/              # Atomic unit
+│       └── src/
+│           └── lib.rs      # ToGen struct
+├── docs/
+│   └── RESEARCH_PHILOSOPHY.md
+└── training/
+    ├── prepare_atomic_dataset.py
+    ├── train_autoencoder.py
+    ├── visualize_atomic_dream.py
+    └── README_TRAINING.md
+```
+
+## 🧠 Core Concepts
+
+### Atomic Flow
+Information flows atom-by-atom through the system:
+```
+Sensory Input → ToGen atoms → Mamba processing → Prediction → Action
+```
+
+### Predictive Processing
+The brain constantly predicts the next atom:
+- **Prediction**: What atom comes next?
+- **Surprise**: Difference between prediction and reality
+- **Learning**: Minimize surprise (Free Energy)
+
+### State Space Model (Mamba)
+Unlike Transformers with O(n²) attention:
+- **Linear complexity**: O(n)
+- **Continuous state**: h(t) = A·h(t-1) + B·x(t)
+- **Selective mechanism**: Learn what to remember
+
+## 📊 Training Results
+
+Atomic training on video data:
+- **Loss**: 5.36 → 0.38 (14x reduction)
+- **Atoms generated**: 60 per dream
+- **Force diversity**: 51 unique spatial values
+
+## 🔬 Research Philosophy
+
+MAINI is based on several theoretical foundations:
+- **Free Energy Principle** (Karl Friston)
+- **Predictive Coding** (Rao & Ballard)
+- **State Space Models** (Mamba, S4)
+- **Atomic Information Theory** (Original)
+
+See [docs/RESEARCH_PHILOSOPHY.md](docs/RESEARCH_PHILOSOPHY.md) for details.
+
+## 📜 License
+
+MIT License - See LICENSE file
+
+## 🤝 Contributing
+
+Contributions welcome! Please read the research philosophy first.
+
 ---
 
-## 🧠 Roadmap Técnico
-
-- [x] **Fase 0:** Portar lógica de Python a Rust (`genulse`).
-- [x] **Fase 1:** Estructura de Workspace y compilación limpia.
-- [x] **Fase 2:** Integración de API Externa y Memoria (v1.2).
-- [x] **Fase 3:** Input Sensorial Real (Frontend Neuro-Link Implementado).
-- [ ] **Fase 4:** **Broca's Arc (The Red Pill).** Implementación del *Symbol Grounding* biológico. Aprendizaje de lenguaje por asociación Hebbiana (Visual <-> Auditivo) sin LLMs.
-- [ ] **Fase 5:** Persistencia a Largo Plazo (Base de datos vectorial / Archivos).
-
-### 🧪 Experimental: Aceleración por Hardware (WGPU)
-Se ha iniciado la integración preliminar de **WebGPU** en el núcleo `genulse`.
-- **Objetivo:** Procesamiento paralelo masivo de matrices sensoriales (Visión) usando Compute Shaders.
-- **Estado:** Motor `GpuVisualCortex` implementado pero no activo por defecto.
-- **Tecnología:** WGSL (WebGPU Shading Language) + wgpu-rs.
-
----
-
-## 📡 Protocolo Togen (Especificación v1.1)
-
-El **Togen** es un hash de 128-bits que representa un "átomo de significado". Su estructura permite identificar el tipo de dato y sus propiedades sin necesidad de decodificar el contenido original.
-
-### Estructura de Bits
-`[Header: 8] [Meta: 8] [Semántico: 32] [Estructural: 32] [Exacto: 48]`
-
-### Tipos de Datos (Header)
-| Hex | Tipo | Descripción |
-| :--- | :--- | :--- |
-| `0x01` | **Texto** | Lenguaje natural. |
-| `0x02` | **Código** | Lenguaje de programación (detectado por heurística). |
-| `0x03` | **Imagen** | Datos visuales (JPG, PNG). |
-| `0x04` | **Audio** | Datos sonoros (WAV). |
-| `0x05` | **Acción** | Comandos de control (Teclado, Mouse, UI). |
-
-### Formato de Acciones (Recomendado)
-Aunque el sistema acepta texto libre, se recomienda el formato `Verbo:Parámetro` para mayor claridad semántica.
-
-| Comando | Meta (Hex) | Tipo |
-| :--- | :--- | :--- |
-| `Click:Left`, `Move:100,200` | `0x02` | **Mouse** |
-| `Key:Enter`, `Type:Hello` | `0x01` | **Teclado** |
-| `Wait:1000`, `Scroll:Down` | `0x00` | **Otro** |
-
-<details>
-<summary><strong>📊 Technical Validation: Semantics (Click to expand)</strong></summary>
-
-> **Hypothesis:** Togenizer uses LSH (Locality Sensitive Hashing) to cluster structurally similar concepts in the 32-bit Semantic space without heavy embeddings.
-
-**Results from `benchmarks/togen_similarity.log`:**
-
-| Pair | Semantic Dist (Bits) | Interpretation |
-| :--- | :---: | :--- |
-| `genesis` vs `genesys` | **0** | **Identical.** Robust against typos. |
-| `hello` vs `hallo` | **4** | **High Similarity.** Groups dialects. |
-| `hello` vs `hola` | **7** | **Low Similarity.** Distinguishes languages. |
-| `genesis` vs `skynet` | **6** | **Distinct.** No confusion. |
-
-*Validated via `cargo test -p togen --test similarity_test`*
-</details>
-
----
-
-## 🤝 Contribución
-
-Este es un proyecto de investigación personal para la creación de **AGI Local**.
-Si eres estudiante o investigador, siéntete libre de hacer fork y experimentar con los kernels sensoriales en `genulse`.
-
-**Autor:** [RGBcript](https://github.com/RGBcript)
-**Licencia:** MIT
+*"Intelligence is prediction. Prediction is compression. Compression is understanding."*

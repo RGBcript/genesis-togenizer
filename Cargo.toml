@@ -1,7 +1,24 @@
 [workspace]
 resolver = "2"
 members = [
-    "genulse",
-    "arcodular",
-    "togen"
+    "crates/genulse",
+    "crates/arcodular",
+    "crates/togen",
+    "crates/curo",
+    "crates/genesis_runtime",
+    "crates/inmece"
 ]
+
+[package]
+name = "maini"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "inmece_server"
+path = "src/bin/inmece_server.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rand = "0.8"

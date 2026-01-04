@@ -1,0 +1,11 @@
+[package]
+name = "genesis_runtime"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+togen = { path = "../togen" }
+genulse = { path = "../genulse" }
+curo = { path = "../curo" }
+arcodular = { path = "../arcodular" }
+tokio = { version = "1.0", features = ["full"] }

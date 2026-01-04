@@ -1,0 +1,14 @@
+[package]
+name = "genulse"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+wgpu = "0.19"
+pollster = "0.3"
+bytemuck = { version = "1.14", features = ["derive"] }
+log = "0.4"
+futures = "0.3"
+ort = { version = "2.0.0-rc.9", features = ["load-dynamic", "download-binaries"] }
+ndarray = "0.15"
+togen = { path = "../togen" }
